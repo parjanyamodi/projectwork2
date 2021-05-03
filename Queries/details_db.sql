@@ -5,3 +5,4 @@ create table subjects(course_code VARCHAR(255) PRIMARY KEY, title VARCHAR(255));
 create table faculty(faculty_code VARCHAR(255) PRIMARY KEY, faculty_name VARCHAR(255), faculty_email VARCHAR(255));
 create table classes(class VARCHAR(255), class_name VARCHAR(255));
 create table subject_faculty(course_code VARCHAR(255), faculty_code VARCHAR(255), class VARCHAR(255));
+/* Relations not yet defined */
