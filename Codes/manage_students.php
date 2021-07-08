@@ -17,6 +17,9 @@
             echo '</script>';
         } 
     }
+    if(isset($_POST['class_name'])) {
+        $class_name=$_POST['class_name'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,21 +113,29 @@
                     }
                     echo'</select>';
                     ?>
-                    <label for="inputEmail4">Student Name</label>
+                    </div>
+                    
+            </div>
+            <button type="submit" class="btn btn-primary">Next</button>
+                </form>
+                <form method="post">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                <label for="inputEmail4">Student Roll Number</label>
+                <input type="text" name="class_name" value="<?php echo $class_name; ?>" hidden></input><br>
+                <label for="inputEmail4">Selected class is <?php echo $class_name; ?>.</label>
                     <?php
-                    include('init.php');
-
-                   
-
-$student_result=mysqli_query($conn,"SELECT `rno` FROM `students` ");
-    echo '<select name="student_no" class="form-control">';
-    echo '<option selected disabled>Select Class</option>';
-while($row = mysqli_fetch_array($student_result)){
-    $display=$row['rno'];
-    echo '<option value="'.$display.'">'.$display.'</option>';
-}
-echo'</select>'
-?>
+                    
+                    
+                    $student_result=mysqli_query($conn,"SELECT `rno` FROM `students` WHERE `class_name` = '$class_name' ");
+                    echo '<select name="student_no" class="form-control">';
+                    echo '<option selected disabled>Select Roll Number</option>';
+                    while($row = mysqli_fetch_array($student_result)){
+                        $display=$row['rno'];
+                        echo '<option value="'.$display.'">'.$display.'</option>';
+                    }
+                    echo'</select>';
+                    ?>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Delete</button>
